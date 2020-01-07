@@ -3,15 +3,19 @@ import apiUrl from './config/apiUrl'
 
 const speedDataFun = (data, myDashboard, time) => {
     function getData() {
-        setTimeout(() => {
-            axios.get(apiUrl.speed).then(res => {
-                data.config.source = res.data.data
-                myDashboard.updateDataTableConfig(data.id, data.config);
+
+        axios.get(apiUrl.speed).then(res => {
+            data.config.source = res.data.data
+            myDashboard.updateDataTableConfig(data.id, data.config);
+            setTimeout(() => {
                 getData()
-            }).catch(() => {
+            }, time);
+        }).catch(() => {
+            setTimeout(() => {
                 getData()
-            })
-        }, time);
+            }, time);
+        })
+
     }
     getData()
 }

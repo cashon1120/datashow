@@ -22,20 +22,19 @@ const myDashboard = bdIotVizPlayer({
 });
 
 const timer = {
-  safe: 10000, // 主动安全占比
-  warning: 10000, // 报警轮训时间
-  running: 2000, // 运行总数
-  carNumber: 20000, // 车辆总数
-  speed: 10000, // 速度统计
-  position: 10000, // 位置
-  hot: 10000, // 热力图
-  risk: 2000,
-  today: 20000
+  safe: 1000 * 60, // 主动安全占比
+  warning: 1000 * 60, // 报警轮训时间
+  running: 1000 * 60, // 运行总数
+  carNumber: 1000 * 60, // 车辆总数
+  speed: 1000 * 60, // 速度统计
+  position: 1000 * 2, // 位置
+  hot: 1000 * 2, // 热力图
+  risk: 1000 * 10, // 风险趋势
+  today: 1000 * 60 * 60 * 24 // 24小时
 }
 
 myDashboard.getDashboardConfig().then(function (config) {
   let dataTables = config.dataTables;
-  console.log(dataTables)
   let safeData, positionData, hotData, riskData, todayData, speedData, warningData, carData, runningData
   dataTables.forEach(data => {
     switch (data.name) {
@@ -78,7 +77,7 @@ myDashboard.getDashboardConfig().then(function (config) {
   todayDataFun(todayData, myDashboard, timer.today)
   warningDataFun(warningData, myDashboard, timer.warning)
   speedDataFun(speedData, myDashboard, timer.speed)
-  // positionDataFun(positionData, myDashboard)
-  // hotDataFun(hotData, myDashboard)
+  hotDataFun(hotData, myDashboard, timer.hot)
+  positionDataFun(positionData, myDashboard, timer.position)
 
 });

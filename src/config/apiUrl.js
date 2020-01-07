@@ -5,7 +5,7 @@ const apiUrl = {
   running: '/com/ymhx/onlineNum',
   safe: '/com/ymhx/coutAllKind',
   speed: '/com/ymhx/speed',
-  position: '',
+  position: '/com/ymhx/location',
   risk: '/com/ymhx/risk',
   today: '/com/ymhx/today'
 }
