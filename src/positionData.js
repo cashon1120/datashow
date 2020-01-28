@@ -1,5 +1,5 @@
 import axios from './utils/request'
-import apiUrl from './config/apiUrl'
+import {apiUrl} from './config/index'
 
 const positionDataFun = (data, myDashboard, time) => {
     function getData() {

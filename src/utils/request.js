@@ -1,5 +1,7 @@
 import axios from 'axios'
-axios.defaults.baseURL = '/api'; // 配置axios请求的地址
+import { baseUrl } from '../config/index.js'
+
+axios.defaults.baseURL = baseUrl(); // 配置axios请求的地址
 axios.defaults.headers.post['Content-Type'] = 'application/json; charset=utf-8';
 axios.defaults.crossDomain = true;
 axios.defaults.withCredentials = true; //设置cross跨域 并设置访问权限 允许跨域携带cookie信息

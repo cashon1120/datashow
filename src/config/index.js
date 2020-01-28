@@ -10,4 +10,11 @@ const apiUrl = {
   today: '/com/ymhx/today'
 }
 
-export default apiUrl
+const baseUrl = () => {
+  return process.env.NODE_ENV === 'development' ? 'api' : ''
+}
+
+export {
+  apiUrl,
+  baseUrl
+}
